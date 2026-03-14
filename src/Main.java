@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Aplicación principal del sistema de procesamiento de pagos.
  *
@@ -16,9 +18,24 @@
  *   - com.paymentapp.payment     → Métodos de pago (Equipo 2)
  *   - com.paymentapp.discount    → Estrategias de descuento (Equipo 3)
  */
+
 public class Main {
 
     public static void main(String[] args) {
         // TODO: Implementar la aplicación principal (Equipo 4)
+
+        // Ejemplo de captura de datos por consola:
+        // Scanner scanner = new Scanner(System.in);
+        //
+        // System.out.print("Ingrese un texto: ");
+        // String texto = scanner.nextLine();       // Lee una línea de texto
+        //
+        // System.out.print("Ingrese un número entero: ");
+        // int entero = scanner.nextInt();           // Lee un entero
+        //
+        // System.out.print("Ingrese un número decimal: ");
+        // double decimal = scanner.nextDouble();    // Lee un decimal
+        //
+        // scanner.close();
     }
 }
