@@ -1,41 +1,92 @@
 import java.util.Scanner;
+import com.paymentapp.interfaces.*;
+import com.paymentapp.interfaces.Descuento;
+import com.paymentapp.payment.*;
 
-/**
- * Aplicación principal del sistema de procesamiento de pagos.
- *
- * Este programa debe permitir:
- *   1. Ingresar el valor de la compra
- *   2. Seleccionar el método de pago
- *   3. Seleccionar un tipo de descuento
- *   4. Procesar el pago
- *   5. Mostrar el resultado final de la transacción
- *
- * Equipo 4: Desarrollar la lógica de interacción con el usuario e integrar
- * los módulos de los demás equipos.
- *
- * Paquetes disponibles:
- *   - com.paymentapp.interfaces  → Interfaces del sistema (Equipo 1)
- *   - com.paymentapp.payment     → Métodos de pago (Equipo 2)
- *   - com.paymentapp.discount    → Estrategias de descuento (Equipo 3)
- */
 
 public class Main {
 
     public static void main(String[] args) {
-        // TODO: Implementar la aplicación principal (Equipo 4)
+        Scanner scanner = new Scanner(System.in);
 
-        // Ejemplo de captura de datos por consola:
-        // Scanner scanner = new Scanner(System.in);
-        //
-        // System.out.print("Ingrese un texto: ");
-        // String texto = scanner.nextLine();       // Lee una línea de texto
-        //
-        // System.out.print("Ingrese un número entero: ");
-        // int entero = scanner.nextInt();           // Lee un entero
-        //
-        // System.out.print("Ingrese un número decimal: ");
-        // double decimal = scanner.nextDouble();    // Lee un decimal
-        //
-        // scanner.close();
+        // 1. Ingresar el valor de la compra
+        System.out.print("Ingrese el valor de la compra: $");
+        double compra = scanner.nextDouble();
+        scanner.nextLine();
+
+        // 2. Seleccionar el método de pago
+        System.out.println("\n--- Método de pago ---");
+        System.out.println("1. Tarjeta de crédito");
+        System.out.println("2. PayPal");
+        System.out.println("3. Criptomoneda");
+        System.out.print("Seleccione: ");
+        int opcionPago = scanner.nextInt();
+        scanner.nextLine();
+
+        PaymentMethod metodo;
+        switch (opcionPago) {
+            case 1:
+                System.out.print("Número de tarjeta: ");
+                String numero = scanner.nextLine();
+                System.out.print("Titular: ");
+                String titular = scanner.nextLine();
+                metodo = new CreditCardPayment(numero, titular, compra);
+                break;
+            case 2:
+                System.out.print("Email de PayPal: ");
+                String email = scanner.nextLine();
+                metodo = new PaypalPayment(email, compra);
+                break;
+            case 3:
+                System.out.print("Dirección de billetera: ");
+                String billetera = scanner.nextLine();
+                System.out.print("Tipo de cripto (BTC/ETH/USDT): ");
+                String cripto = scanner.nextLine();
+                metodo = new CryptoPayment(billetera, cripto, compra);
+                break;
+            default:
+                System.out.println("Opción inválida.");
+                scanner.close();
+                return;
+        }
+
+        // 3. Seleccionar el tipo de descuento
+        System.out.println("\n--- Descuentos ---");
+        System.out.println("1. Estudiante        (15% off)");
+        System.out.println("2. Promoción         (10% off)");
+        System.out.println("3. Cliente frecuente (20% off)");
+        System.out.println("4. Sin descuento");
+        System.out.print("Seleccione: ");
+        int opcionDescuento = scanner.nextInt();
+
+        DiscountStrategy estrategia;
+        String nombreDescuento;
+        switch (opcionDescuento) {
+            case 1:
+                estrategia = Descuento.DesEstudiantes;
+                nombreDescuento = "Estudiantes";
+                break;
+            case 2:
+                estrategia = Descuento.DesPromocion;
+                nombreDescuento = "Promoción";
+                break;
+            case 3:
+                estrategia = Descuento.DesClienteFijo;
+                nombreDescuento = "Cliente frecuente";
+                break;
+            default:
+                estrategia = Descuento.ClienteNormal;
+                nombreDescuento = "Sin descuento";
+                break;
+        }
+
+        // 4. Procesar el pago
+        metodo.ProcesarPago();
+
+        // 5. Mostrar el resultado final
+        double montoFinal = Descuento.applyAndShow(compra, estrategia, nombreDescuento);
+        System.out.println(metodo.MostrarDetalleTrans(montoFinal, metodo.MostrarTipoPago()));
+
+        scanner.close();
     }
 }
