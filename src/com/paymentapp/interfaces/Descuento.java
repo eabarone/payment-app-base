@@ -13,7 +13,7 @@ public class Descuento {
             monto -> monto * 0.80;
 
     public static final DiscountStrategy ClienteNormal =
-            monto -> monto * 0.00;
+            monto -> monto;
 
 
     public static double applyAndShow(double monto, DiscountStrategy strategy, String discountName) {
