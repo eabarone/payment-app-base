@@ -1,12 +1,12 @@
-# 🏦 PARCIAL — Sistema de Pagos `payment-app-base`
+# 🏦 Parcial — Sistema de pagos `payment-app-base`
 
 ## Información General
 
-| Campo              | Detalle                                                    |
-|--------------------|------------------------------------------------------------|
-| **Materia**        | Programación Orientada a Objetos                           |
-| **Duración**       | 2 horas                                                    |
-| **Modalidad**      | Individual — sobre código existente                        |
+| Campo              | Detalle                                                        |
+|--------------------|----------------------------------------------------------------|
+| **Materia**        | Programación III                                               |
+| **Duración**       | 2 horas                                                        |
+| **Modalidad**      | Individual — sobre código existente                            |
 | **Entregable**     | Proyecto compilable y funcional con todos los puntos resueltos |
 
 ---
@@ -19,7 +19,7 @@ Usted ha sido contratado como desarrollador Java en la empresa **PayCo**. El equ
 
 ---
 
-## 📋 TICKET 1 — Nueva forma de pago: Transferencia Bancaria (1.25)
+## 📋 Ticket 1 — Nueva forma de pago: Transferencia Bancaria (1.25)
 
 **Prioridad:** Alta  
 **Temas evaluados:** Interfaces, Herencia múltiple por interfaces  
@@ -53,7 +53,7 @@ El área de negocio solicita agregar **Transferencia Bancaria** como nuevo méto
 
 ---
 
-## 📋 TICKET 2 — Descuentos personalizados con Lambdas (1.0)
+## 📋 Ticket 2 — Descuentos personalizados con Lambdas (1.0)
 
 **Prioridad:** Alta  
 **Temas evaluados:** Interfaces funcionales, Expresiones Lambda  
@@ -89,7 +89,7 @@ El equipo de marketing necesita nuevas estrategias de descuento más flexibles. 
 
 ---
 
-## 📋 TICKET 3 — Procesador Genérico de Pagos (1.25)
+## 📋 Ticket 3 — Procesador Genérico de Pagos (1.25)
 
 **Prioridad:** Alta  
 **Temas evaluados:** Tipos genéricos (Generics)  
@@ -157,7 +157,7 @@ Observe que `<T extends PaymentMethod>` significa que `T` puede ser **cualquier 
 
 ---
 
-## 📋 TICKET 4 — Notificaciones de Pago con Eventos (1.0)
+## 📋 Ticket 4 — Notificaciones de Pago con Eventos (1.0)
 
 **Prioridad:** Media  
 **Temas evaluados:** Eventos, Interfaces funcionales, Lambdas  
@@ -243,7 +243,7 @@ Como `PaymentEventListener` es una interfaz funcional con un solo método `onEve
 
 ---
 
-## 📋 TICKET 5 — Integración final y prueba de concepto (0.5)
+## 📋 Ticket 5 — Integración final y prueba de concepto (0.5)
 
 **Prioridad:** Media  
 **Temas evaluados:** Integración de todos los conceptos anteriores  
@@ -313,18 +313,18 @@ src/
     │   ├── Refundable.java             ← (sin modificar)
     │   ├── DiscountStrategy.java       ← (sin modificar)
     │   ├── Descuento.java              ← (sin modificar)
-    │   └── PaymentEventListener.java   ← NUEVO (Ticket 4)
+    │   └── PaymentEventListener.java   ← Nuevo (Ticket 4)
     ├── modelo/
     │   ├── DefaultPayment.java         ← (sin modificar)
-    │   ├── PaymentProcessor.java       ← NUEVO (Ticket 3, esqueleto dado)
-    │   └── EventManager.java           ← NUEVO (Ticket 4, esqueleto dado)
+    │   ├── PaymentProcessor.java       ← Nuevo (Ticket 3, esqueleto dado)
+    │   └── EventManager.java           ← Nuevo (Ticket 4, esqueleto dado)
     ├── payment/
     │   ├── CreditCardPayment.java      ← (sin modificar)
     │   ├── PaypalPayment.java          ← (sin modificar)
     │   ├── CryptoPayment.java          ← (sin modificar)
-    │   └── BankTransferPayment.java    ← NUEVO (Ticket 1)
+    │   └── BankTransferPayment.java    ← Nuevo (Ticket 1)
     └── discount/
-        └── CustomDiscount.java         ← NUEVO (Ticket 2)
+        └── CustomDiscount.java         ← Nuevo (Ticket 2)
 ```
 
 ---
