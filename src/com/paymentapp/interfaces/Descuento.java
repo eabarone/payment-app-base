@@ -2,7 +2,6 @@ package com.paymentapp.interfaces;
 
 public class Descuento {
 
-
     public static final DiscountStrategy DesEstudiantes =
             monto -> monto * 0.85;
 
